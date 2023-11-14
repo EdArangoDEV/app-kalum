@@ -11,14 +11,14 @@ export class SidenavComponent implements OnInit {
   menuNav = [
     { name: 'Home', route: 'home', icon: 'home' },
     { name: 'Carreras', route: 'carreras', icon: 'category' },
-    { name: 'Examenes', route: 'home', icon: 'calendar_today' },
+    { name: 'Examenes Admisión', route: 'examenes', icon: 'psychology_alt' },
   ];
 
   mobileQuery: MediaQueryList;
 
   // para darle el ancho al sideNav
   constructor(media: MediaMatcher) {
-    this.mobileQuery = media.matchMedia('{max-width: 600px}');
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
   }
 
   ngOnInit(): void {}
