@@ -73,8 +73,7 @@ export class CarrerasTecnicasComponent implements OnInit {
 
   openFormCarreraTecnica() {
     const dialogRef = this.dialog.open(FormCarreraTecnicaComponent, {
-      width: '450px',
-    });
+      width: '500px'});
     dialogRef.afterClosed().subscribe((result) => {
       if (result == 1) {
         this.getCarrerasTecnicas();
@@ -90,7 +89,7 @@ export class CarrerasTecnicasComponent implements OnInit {
 
   editFormCarreraTecnica(carreraId: string, nombre: string) {
     const dialogRef = this.dialog.open(FormCarreraTecnicaComponent, {
-      width: '450px',
+      width: '600px',
       data: { carreraId, nombre },
     });
     dialogRef.afterClosed().subscribe((result) => {
@@ -123,7 +122,11 @@ export class CarrerasTecnicasComponent implements OnInit {
             }
           },
           next: (data) => {
-            Swal.fire('Carreras Técnicas', `Se elimino la carrera ténica: ${nombre}`, 'success');
+            Swal.fire(
+              'Carreras Técnicas',
+              `Se elimino la carrera ténica: ${nombre}`,
+              'success'
+            );
             this.getCarrerasTecnicas();
           },
         });

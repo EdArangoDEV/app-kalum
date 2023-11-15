@@ -1,5 +1,7 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from 'src/app/modules/login/components/login/login.component';
 
 @Component({
   selector: 'app-sidenav',
@@ -16,10 +18,16 @@ export class SidenavComponent implements OnInit {
 
   mobileQuery: MediaQueryList;
 
+  ngOnInit(): void {}
+
   // para darle el ancho al sideNav
-  constructor(media: MediaMatcher) {
+  constructor(media: MediaMatcher, public dialogLogin: MatDialog) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
   }
 
-  ngOnInit(): void {}
+  openFormLogin(){
+    const dialogRef = this.dialogLogin.open(LoginComponent, {width: '500px'});
+  }
+
+
 }
