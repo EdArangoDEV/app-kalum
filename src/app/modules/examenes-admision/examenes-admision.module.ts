@@ -5,12 +5,14 @@ import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '../shared/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormExamenAdmisionComponent } from './components/examenes-admision/form-examen-admision.component';
 
 
 
 @NgModule({
   declarations: [
-    ExamenesAdmisionComponent
+    ExamenesAdmisionComponent,
+    FormExamenAdmisionComponent
   ],
   imports: [
     CommonModule,

@@ -37,7 +37,7 @@ export class CarreraTecnicaService {
     // return this.http.put(`${BASE_URL}/carreras-tecnicas/${body.carreraId}`, body);
   }
 
-  deleteCarreraTecnica(carreraId: any){
-    return this.http.delete(`${BASE_URL}/carreras-tecnicas/${carreraId}`); 
+  deleteCarreraTecnica(carreraId: any) {
+    return this.http.delete(`${BASE_URL}/carreras-tecnicas/${carreraId}`);
   }
 }

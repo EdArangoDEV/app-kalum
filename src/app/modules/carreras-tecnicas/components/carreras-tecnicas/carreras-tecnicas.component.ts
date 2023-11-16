@@ -15,6 +15,10 @@ import Swal from 'sweetalert2';
 export class CarrerasTecnicasComponent implements OnInit {
   displayColumns: string[] = ['no', 'nombre', 'acciones'];
 
+  ngOnInit(): void {
+    this.getCarrerasTecnicas();
+  }
+
   // fuente de origen
   dataSource = new MatTableDataSource<CarreraTecnica>();
 
@@ -22,14 +26,24 @@ export class CarrerasTecnicasComponent implements OnInit {
   @ViewChild(MatPaginator)
   paginador!: MatPaginator;
 
-  ngOnInit(): void {
-    this.getCarrerasTecnicas();
-  }
-
   constructor(
     private carreraTecnicaService: CarreraTecnicaService,
     public dialog: MatDialog
   ) {}
+
+
+  processCarrerasTecnicasResponse(data: any) {
+    const dataCarreraTecnica: CarreraTecnica[] = [];
+    let listaCarrerasTecnicas = data;
+    listaCarrerasTecnicas.forEach((elemento: CarreraTecnica) => {
+      dataCarreraTecnica.push(elemento);
+    });
+    // console.log(dataCarreraTecnica);
+    this.dataSource = new MatTableDataSource<CarreraTecnica>(
+      dataCarreraTecnica
+    );
+    this.dataSource.paginator = this.paginador;
+  }
 
   // metodo para conectarse al servicio y traer informacion
   getCarrerasTecnicas() {
@@ -57,19 +71,6 @@ export class CarrerasTecnicasComponent implements OnInit {
   // isObjectEmpty(objectName: any){
   //   return Object.keys(objectName).length === 0 && objectName.constructor === Object;
   // }
-
-  processCarrerasTecnicasResponse(data: any) {
-    const dataCarreraTecnica: CarreraTecnica[] = [];
-    let listaCarrerasTecnicas = data;
-    listaCarrerasTecnicas.forEach((elemento: CarreraTecnica) => {
-      dataCarreraTecnica.push(elemento);
-    });
-    // console.log(dataCarreraTecnica);
-    this.dataSource = new MatTableDataSource<CarreraTecnica>(
-      dataCarreraTecnica
-    );
-    this.dataSource.paginator = this.paginador;
-  }
 
   openFormCarreraTecnica() {
     const dialogRef = this.dialog.open(FormCarreraTecnicaComponent, {

@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>
+    Examenes Admisión
+</h2>
+<mat-dialog-content>
+    <form [formGroup]="examenesAdmisionFormGroup">
+        <div class="form-element-container">
+            <mat-form-field>
+                <input formControlName="fechaExamen" matInput placeholder="Examen Admisión" required>
+            </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button color="primary" (click)="onSave()">
+        <mat-icon>done</mat-icon>Guardar
+    </button>
+    <button mat-button color="primary" (click)="onCancel()">
+        <mat-icon>close</mat-icon>Cancelar
+    </button>
+</mat-dialog-actions>
