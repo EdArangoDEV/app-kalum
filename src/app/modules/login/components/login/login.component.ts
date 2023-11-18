@@ -8,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
+  constructor(private formBuilder: FormBuilder, private digalogRef: MatDialogRef<LoginComponent>)
+  {  }
+
+  OnInit(): void {
+    
+  }
+
+  onClose (){
+    this.dialogRef.close(2);
+  }
 }
