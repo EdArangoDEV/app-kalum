@@ -3,12 +3,14 @@ import { HomeComponent } from "./components/home/home.component";
 import { NgModule } from "@angular/core";
 import { CarrerasTecnicasComponent } from "../carreras-tecnicas/components/carreras-tecnicas/carreras-tecnicas.component";
 import { ExamenesAdmisionComponent } from "../examenes-admision/components/examenes-admision/examenes-admision.component";
+import { JornadasComponent } from "../jornadas/components/jornadas/jornadas.component";
 
 const childRoutes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'home', component: HomeComponent},
     {path: 'carreras', component: CarrerasTecnicasComponent},
-    {path: 'examenes', component: ExamenesAdmisionComponent}
+    {path: 'examenes', component: ExamenesAdmisionComponent},
+    {path: 'jornadas', component: JornadasComponent}
 ]
 
 @NgModule ({

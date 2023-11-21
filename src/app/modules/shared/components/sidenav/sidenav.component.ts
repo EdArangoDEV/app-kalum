@@ -14,6 +14,7 @@ export class SidenavComponent implements OnInit {
     { name: 'Home', route: 'home', icon: 'home' },
     { name: 'Carreras', route: 'carreras', icon: 'category' },
     { name: 'Examenes Admisión', route: 'examenes', icon: 'psychology_alt' },
+    {name: 'Jornadas', route: 'jornadas', icon: 'schedule'}
   ];
 
   mobileQuery: MediaQueryList;
