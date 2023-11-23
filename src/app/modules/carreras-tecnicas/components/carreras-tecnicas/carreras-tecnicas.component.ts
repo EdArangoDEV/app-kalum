@@ -6,6 +6,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { FormCarreraTecnicaComponent } from './form-carrera-tecnica.component';
 import Swal from 'sweetalert2';
+import { AuthService } from 'src/app/modules/shared/services/auth.service';
+import { LoginComponent } from 'src/app/modules/login/components/login/login.component';
 
 @Component({
   selector: 'app-carreras-tecnicas',
@@ -28,7 +30,8 @@ export class CarrerasTecnicasComponent implements OnInit {
 
   constructor(
     private carreraTecnicaService: CarreraTecnicaService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private authService: AuthService
   ) {}
 
 
@@ -74,7 +77,8 @@ export class CarrerasTecnicasComponent implements OnInit {
 
   openFormCarreraTecnica() {
     const dialogRef = this.dialog.open(FormCarreraTecnicaComponent, {
-      width: '500px'});
+      width: '500px',
+    });
     dialogRef.afterClosed().subscribe((result) => {
       if (result == 1) {
         this.getCarrerasTecnicas();
@@ -133,5 +137,21 @@ export class CarrerasTecnicasComponent implements OnInit {
         });
       }
     });
+  }
+
+  openEnrrollmentCarreraTecnica(carreraId: string, nombre: string) {
+    if (this.authService.isAuthenticated()) {
+    } else {
+      Swal.fire({
+        icon: 'info',
+        title: 'Asignar carrera técnica',
+        html: 'Debes iniciar sesión o crear una cuenta',
+        footer: 'Kalum v1.0.0',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.dialog.open(LoginComponent, { width: '450px' });
+        }
+      });
+    }
   }
 }

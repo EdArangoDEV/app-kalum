@@ -4,12 +4,14 @@ import { LoginComponent } from './components/login/login.component';
 import { MaterialModule } from '../shared/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormRegisterComponent } from './components/login/form-register.component';
 
 
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    FormRegisterComponent
   ],
   imports: [
     CommonModule,

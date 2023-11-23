@@ -35,11 +35,11 @@ mat-form-field {
     width: 100%;
 }
 
-.login-container {
+.form-container {
   display: flex;
   flex-direction: column;
 }
-.login-container > * {
+.form-container > * {
   width: 100%;
 }
 

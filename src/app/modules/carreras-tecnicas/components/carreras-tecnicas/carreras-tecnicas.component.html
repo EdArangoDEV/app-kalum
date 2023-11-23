@@ -11,14 +11,15 @@
         <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
             <ul fxLayout="row" fxLayoutGap="20px">
                 <li>
-                    <button mat-raised-button color="primary" (click)="openFormCarreraTecnica()">Agregar Carrera</button>
+                    <button mat-raised-button color="primary" (click)="openFormCarreraTecnica()">Agregar
+                        Carrera</button>
                 </li>
             </ul>
         </div>
     </mat-card-header>
 
     <mat-card-content>
-        <table mat-table clas="mat-cell" [dataSource] = 'dataSource'>
+        <table mat-table clas="mat-cell" [dataSource]='dataSource'>
             <ng-container matColumnDef="no">
                 <th mat-header-cell *matHeaderCellDef>No.</th>
                 <td mat-cell *matCellDef="let elemento; index as row">
@@ -29,21 +30,29 @@
             </ng-container>
             <ng-container matColumnDef="nombre">
                 <th mat-header-cell *matHeaderCellDef>Nombre</th>
-                    <td mat-cell *matCellDef="let elemento">
-                        {{elemento.nombre}}
-                    </td>
+                <td mat-cell *matCellDef="let elemento">
+                    {{elemento.nombre}}
+                </td>
             </ng-container>
             <ng-container matColumnDef="acciones">
                 <th mat-header-cell *matHeaderCellDef>Acciones</th>
                 <td mat-cell *matCellDef="let elemento; let i=index;">
-                    <button mat-icon-button id="color-verde" (click)="editFormCarreraTecnica(elemento.carreraId, elemento.nombre)">
+                    <button mat-icon-button id="color-verde"
+                        (click)="editFormCarreraTecnica(elemento.carreraId, elemento.nombre)">
                         <mat-icon aria-label="Edit">
                             edit
                         </mat-icon>
                     </button>
-                    <button mat-icon-button id="color-rojo" (click)="deleteCarreraTecnica(elemento.carreraId, elemento.nombre)">
+                    <button mat-icon-button id="color-rojo"
+                        (click)="deleteCarreraTecnica(elemento.carreraId, elemento.nombre)">
                         <mat-icon aria-label="Delete">
                             delete
+                        </mat-icon>
+                    </button>
+                    <button mat-icon-button color="primary"
+                        (click)="openEnrrollmentCarreraTecnica(elemento.carreraId, elemento.nombre)">
+                        <mat-icon aria-label="Asignar">
+                            assignment
                         </mat-icon>
                     </button>
                 </td>
