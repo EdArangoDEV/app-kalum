@@ -34,7 +34,6 @@ export class CarrerasTecnicasComponent implements OnInit {
     private authService: AuthService
   ) {}
 
-
   processCarrerasTecnicasResponse(data: any) {
     const dataCarreraTecnica: CarreraTecnica[] = [];
     let listaCarrerasTecnicas = data;
