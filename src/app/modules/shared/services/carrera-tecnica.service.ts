@@ -26,6 +26,12 @@ export class CarreraTecnicaService {
     return this.http.get(`${BASE_URL}/carreras-tecnicas`);
   }
 
+  getCarrera(carreraId: any) {
+    // return this.carreras;
+    return this.http.get(`${BASE_URL}/carreras-tecnicas/${carreraId}`);
+  }
+
+
   addCarreraTecnica(body: any) {
     return this.http.post(`${BASE_URL}/carreras-tecnicas`, body);
   }

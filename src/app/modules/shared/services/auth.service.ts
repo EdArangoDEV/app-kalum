@@ -3,6 +3,8 @@ import { Usuario } from '../../usuarios/model/usuario.model';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/app/environments/environments';
+import { CarrerasTecnicasComponent } from '../../carreras-tecnicas/components/carreras-tecnicas/carreras-tecnicas.component';
+
 
 const BASE_URL_AUTH = environment.BASE_URL_KALUM_AUTH;
 const BASE_URL_ROLES = environment.BASE_URL_KALUM_ROLES;
@@ -14,6 +16,7 @@ export class AuthService {
   // para informacion del token
   private _token: string;
   private _usuario: Usuario;
+  private carrerasTecnicas: CarrerasTecnicasComponent;
 
   constructor(private http: HttpClient) {}
 
@@ -47,10 +50,10 @@ export class AuthService {
   login(usuario: Usuario): Observable<any> {
     const httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    // return this.http.get(BASE_URL_AUTH, usuario, {headers: httpHeaders});
+    return this.http.post(`${BASE_URL_AUTH}/v1/accounts/login`, usuario, {headers: httpHeaders});
 
     // con el link de Webhook
-    return this.http.get(BASE_URL_AUTH);
+    // return this.http.get(`${BASE_URL_AUTH}/v1/accounts/login`);
   }
 
   isAuthenticated(): boolean {
@@ -93,8 +96,9 @@ export class AuthService {
     this._usuario = new Usuario();
     this._usuario.username = payload.username;
     this._usuario.email = payload.email;
-    this._usuario.identificationId = payload.identificationId;
+    this._usuario.identificationId = payload.identificationId || payload.IdentificationId;
     this._usuario.roles = payload[BASE_URL_ROLES];
+    console.log(this._usuario);
     sessionStorage.setItem('usuario', JSON.stringify(this._usuario));
   }
 
@@ -105,5 +109,7 @@ export class AuthService {
     sessionStorage.clear();
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('usuario');
+    // this.carrerasTecnicas.getCarrerasTecnicas();
+    window.location.reload();
   }
 }

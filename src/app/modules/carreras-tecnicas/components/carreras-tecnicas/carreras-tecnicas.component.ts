@@ -8,6 +8,7 @@ import { FormCarreraTecnicaComponent } from './form-carrera-tecnica.component';
 import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/modules/shared/services/auth.service';
 import { LoginComponent } from 'src/app/modules/login/components/login/login.component';
+import { FormRegisterAspiranteComponent } from './form-register-aspirante.component';
 
 @Component({
   selector: 'app-carreras-tecnicas',
@@ -31,7 +32,7 @@ export class CarrerasTecnicasComponent implements OnInit {
   constructor(
     private carreraTecnicaService: CarreraTecnicaService,
     public dialog: MatDialog,
-    private authService: AuthService
+    public authService: AuthService
   ) {}
 
   processCarrerasTecnicasResponse(data: any) {
@@ -140,6 +141,14 @@ export class CarrerasTecnicasComponent implements OnInit {
 
   openEnrrollmentCarreraTecnica(carreraId: string, nombre: string) {
     if (this.authService.isAuthenticated()) {
+      // proceso de confirmacion para cerrera tecnia
+      // ROLE_USER = 0 | ROLE_CANDIDATE = EXP-20230001 | ROLE_STUDENT = 20230001
+      if (this.authService.usuario.identificationId === '0') {
+        const formRegisterAspirante = this.dialog.open(
+          FormRegisterAspiranteComponent,
+          { width: '500px', data: { carreraId, nombre } }
+        );
+      }
     } else {
       Swal.fire({
         icon: 'info',

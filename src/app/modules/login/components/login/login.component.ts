@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
           }
         });
         console.log(response);
+        window.location.reload();
       },
     });
   }
