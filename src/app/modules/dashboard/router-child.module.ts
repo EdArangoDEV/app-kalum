@@ -5,6 +5,7 @@ import { CarrerasTecnicasComponent } from "../carreras-tecnicas/components/carre
 import { ExamenesAdmisionComponent } from "../examenes-admision/components/examenes-admision/examenes-admision.component";
 import { JornadasComponent } from "../jornadas/components/jornadas/jornadas.component";
 
+
 const childRoutes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'home', component: HomeComponent},

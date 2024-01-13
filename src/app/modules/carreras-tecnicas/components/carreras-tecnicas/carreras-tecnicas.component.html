@@ -19,7 +19,7 @@
     </mat-card-header>
 
     <mat-card-content>
-        <table mat-table clas="mat-cell" [dataSource]='dataSource'>
+        <table mat-table class="mat-cell" [dataSource]='dataSource'>
             <ng-container matColumnDef="no">
                 <th mat-header-cell *matHeaderCellDef>No.</th>
                 <td mat-cell *matCellDef="let elemento; index as row">
@@ -63,3 +63,4 @@
         <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
     </mat-card-content>
 </mat-card>
+

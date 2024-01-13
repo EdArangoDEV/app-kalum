@@ -11,7 +11,7 @@
     </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-button color="primary" (click)="onSave()">
+    <button mat-button color="primary" (click)="onSave()" [disabled]="examenesAdmisionFormGroup.invalid">
         <mat-icon>done</mat-icon>Guardar
     </button>
     <button mat-button color="primary" (click)="onCancel()">

@@ -3,7 +3,7 @@ import { Usuario } from '../../usuarios/model/usuario.model';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/app/environments/environments';
-import { CarrerasTecnicasComponent } from '../../carreras-tecnicas/components/carreras-tecnicas/carreras-tecnicas.component';
+
 
 
 const BASE_URL_AUTH = environment.BASE_URL_KALUM_AUTH;
@@ -16,7 +16,7 @@ export class AuthService {
   // para informacion del token
   private _token: string;
   private _usuario: Usuario;
-  private carrerasTecnicas: CarrerasTecnicasComponent;
+
 
   constructor(private http: HttpClient) {}
 
@@ -110,6 +110,5 @@ export class AuthService {
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('usuario');
     // this.carrerasTecnicas.getCarrerasTecnicas();
-    window.location.reload();
   }
 }

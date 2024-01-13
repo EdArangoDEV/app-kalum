@@ -31,6 +31,11 @@
 </mat-dialog-content>
 <mat-dialog-actions>
     <div>
+        <button mat-button color="primary" (click)="onBack()">
+        <mat-icon>arrow_back</mat-icon>Atras
+        </button>
+    </div>
+    <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
         <button mat-button color="primary" (click)="onCreate()" [disabled]= "formRegister.invalid">
             <mat-icon>save</mat-icon>Crear
         </button>

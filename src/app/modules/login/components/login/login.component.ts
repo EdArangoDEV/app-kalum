@@ -47,10 +47,18 @@ export class LoginComponent implements OnInit {
         }).then((result) => {
           if (result.isConfirmed) {
             this.dialogLoginRef.close(1);
+            window.location.reload();
           }
         });
         console.log(response);
-        window.location.reload();
+      },
+      error: (error) => {
+        console.log(error);
+        Swal.fire(
+          'Error',
+          'Ocurrio un error al momento de Iniciar sesion, valide Usuario y contraseña',
+          'error'
+        )
       },
     });
   }

@@ -11,20 +11,20 @@ export class ExamenesAdmisionService {
   constructor(private http: HttpClient) {}
 
   getExamenes() {
-    return this.http.get(`${BASE_URL}/examanes-admision`);
+    return this.http.get(`${BASE_URL}/examenes-admision`);
   }
 
   addExamenAdmision(body: any) {
-    return this.http.post(`${BASE_URL}/examanes-admision`, body);
+    return this.http.post(`${BASE_URL}/examenes-admision`, body);
   }
 
   updateExamenAdmision(body: any) {
-    return this.http.put(`${BASE_URL}/examanes-admision/${body.examenId}`, {
+    return this.http.put(`${BASE_URL}/examenes-admision/${body.examenId}`, {
       fecha: body.fecha,
     });
   }
 
   deleteExamenAdmision(examenId: any) {
-    return this.http.delete(`${BASE_URL}/examanes-admision/${examenId}`);
+    return this.http.delete(`${BASE_URL}/examenes-admision/${examenId}`);
   }
 }

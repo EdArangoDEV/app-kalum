@@ -7,6 +7,9 @@ import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material/dialog';
 import { formatDate } from '@angular/common';
 import { FormExamenAdmisionComponent } from './form-examen-admision.component';
+import { AuthService } from 'src/app/modules/shared/services/auth.service';
+import { FormRegisterAspiranteComponent } from 'src/app/modules/carreras-tecnicas/components/carreras-tecnicas/form-register-aspirante.component';
+import { LoginComponent } from 'src/app/modules/login/components/login/login.component';
 
 @Component({
   selector: 'app-examenes-admision',
@@ -29,7 +32,8 @@ export class ExamenesAdmisionComponent implements OnInit {
 
   constructor(
     private examenesAdmisionService: ExamenesAdmisionService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public authService: AuthService
   ) {}
 
   processExamenesAdmision(data: any) {
@@ -84,16 +88,16 @@ export class ExamenesAdmisionComponent implements OnInit {
     });
   }
 
-  editFormExamenAdmision(examenId: string, fechaExamen: string){
+  editFormExamenAdmision(examenId: string, fechaExamen: string) {
     const dialogRef = this.dialog.open(FormExamenAdmisionComponent, {
       width: '600px',
-      data:{examenId, fechaExamen},
-      });
+      data: { examenId, fechaExamen },
+    });
     dialogRef.afterClosed().subscribe((result) => {
       if (result == 1) {
         this.getExamenesAdmision();
       }
-    })
+    });
   }
 
   deleteExamenAdmision(examenId: any, fecha: any) {
@@ -131,4 +135,28 @@ export class ExamenesAdmisionComponent implements OnInit {
     });
   }
 
+  openEnrrollmentExamenAdmision(examenId: string, fechaExamen: string) {
+    if (this.authService.isAuthenticated()) {
+      if (this.authService.usuario.identificationId === '0') {
+        const formRegisterAspirante = this.dialog.open(
+          FormRegisterAspiranteComponent,
+          {
+            width: '500px',
+            data: { examenId, fechaExamen },
+          }
+        );
+      }
+    } else {
+      Swal.fire({
+        icon: 'info',
+        title: 'Asignar Examen Admisión',
+        html: 'Debes iniciar sesión o crear una cuenta',
+        footer: 'Kalum v1.0.0',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.dialog.open(LoginComponent, { width: '450px' });
+        }
+      });
+    }
+  }
 }

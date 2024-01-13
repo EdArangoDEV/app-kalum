@@ -2,7 +2,8 @@
 
 export const environment = {
     production: false,
-    BASE_URL_KALUM_MANAGEMENT: 'http://localhost:5070/Kalum-management',
+    // BASE_URL_KALUM_MANAGEMENT: 'http://localhost:5070/Kalum-management',
+    BASE_URL_KALUM_MANAGEMENT: 'http://localhost:5002/Kalum-management',
 
     // para el endpoint de usuario
     BASE_URL_KALUM_AUTH: 'http://localhost:5288/authkalummanagement',

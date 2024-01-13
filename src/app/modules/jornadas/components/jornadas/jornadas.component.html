@@ -1,1 +1,68 @@
-<p>jornadas works!</p>
+<mat-card>
+    <h2 class="alinear">Listado de Jornadas</h2>
+    <mat-card-header>
+        <mat-form-field hintLabel="Buscar Jornadas" appearance="fill">
+            <mat-label>Buscar Jornada</mat-label>
+            <input matInput #input>
+        </mat-form-field>
+    </mat-card-header>
+
+    <mat-card-header>
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+            <ul fxLayout="row" fxLayoutGap="20px">
+                <li>
+                    <button *ngIf="authService.hasRole('ROLE_ADMIN')" mat-raised-button color="primary" (click)="openFormJornada()">Agregar
+                        Jornada</button>
+                </li>
+            </ul>
+        </div>
+    </mat-card-header>
+
+    <mat-card-content>
+        <table mat-table class="mat-cell" [dataSource]="dataSource">
+            <ng-container matColumnDef="no">
+                <th mat-header-cell *matHeaderCellDef>No.</th>
+                <td mat-cell *matCellDef="let elemento; index as row">
+                    <ng-container *ngIf="elemento">
+                        {{row+1}}
+                    </ng-container>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="prefijo">
+                <th mat-header-cell *matHeaderCellDef>Prefijo</th>
+                <td mat-cell *matCellDef="let elemento">
+                    {{elemento.prefijo}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="descripcion">
+                <th mat-header-cell *matHeaderCellDef>Descripción</th>
+                <td mat-cell *matCellDef="let elemento">
+                    {{elemento.descripcion}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                <td mat-cell *matCellDef="let elemento; let i=index;">
+                    <button *ngIf="authService.hasRole('ROLE_ADMIN')" mat-icon-button id="color-verde" (click)="editFormJornada(elemento.jornadaId, elemento.prefijo, elemento.descripcion)"> 
+                        <mat-icon aria-label="Edit">
+                            edit
+                        </mat-icon>
+                    </button>
+                    <button *ngIf="authService.hasRole('ROLE_ADMIN')" mat-icon-button id="color-rojo" (click)="deleteJornada(elemento.jornadaId, elemento.descripcion)">
+                        <mat-icon aria-label="Delete">
+                            delete
+                        </mat-icon>
+                    </button>
+                    <button mat-icon-button color="primary" (click)="openEnrrollmentJornada(elemento.jornadaId, elemento.descripcion)">
+                        <mat-icon aria-label="Asignar">
+                            assignment
+                        </mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayColumns"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+    </mat-card-content>
+</mat-card>

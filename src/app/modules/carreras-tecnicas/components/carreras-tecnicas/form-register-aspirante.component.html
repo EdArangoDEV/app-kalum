@@ -28,32 +28,42 @@
                 <input formControlName="direccion" matInput placeholder="Dirección" required>
             </mat-form-field>
         </div>
-        <!-- <div class="form-container">
-            <mat-form-field>
-                <mat-label>Carreras Técnicas</mat-label>
-                <mat-select formControlName="carreraId">
-                    <mat-option *ngFor="let carrera of carreraTecnica" [value]="carrera.carreraId">
-                        {{ carrera.nombre }}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div> -->
-        <div class="form-element-container">
+        <!-- <div class="form-element-container">
             <mat-form-field>
                 <mat-label>Carrera Técnica</mat-label>
                 <input formControlName="nombreCarrera" matInput placeholder="Carrera Técnica" readonly="readonly">
             </mat-form-field>
-        </div>
-        <!-- <div class="form-container">
+        </div> -->
+        <div class="form-container">
             <mat-form-field>
-                <mat-label>Carreras Técnicas</mat-label>
+                <mat-label>Carrera Técnica</mat-label>
                 <mat-select formControlName="carreraId">
-                    <mat-option *ngFor="let carrera of carreraTecnica" [value]="carrera.carreraId">
+                    <mat-option *ngFor="let carrera of carrerasTecnicas" [value]="carrera.carreraId">
                         {{ carrera.nombre }}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-        </div> -->
+        </div>
+        <div class="form-container">
+            <mat-form-field>
+                <mat-label>Examenes Admision</mat-label>
+                <mat-select formControlName="examenId">
+                    <mat-option *ngFor="let examen of examenes" [value]="examen.examenId">
+                        {{ examen.fechaExamen | date:'dd/MM/yy H:mm a'}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form-container">
+            <mat-form-field>
+                <mat-label>Jornadas</mat-label>
+                <mat-select formControlName="jornadaId">
+                    <mat-option *ngFor="let jornada of jornadas" [value]="jornada.jornadaId">
+                        {{ jornada.descripcion }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
     </form>
 </mat-dialog-content>
 <mat-dialog-actions>

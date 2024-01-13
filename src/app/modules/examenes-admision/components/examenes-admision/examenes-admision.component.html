@@ -11,14 +11,15 @@
         <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
             <ul fxLayout="row" fxLayoutGap="20px">
                 <li>
-                    <button mat-raised-button color="primary" (click)="openFormExamenesAdmision()">Agregar Examen Admisión</button>
+                    <button *ngIf="authService.hasRole('ROLE_ADMIN')" mat-raised-button color="primary"
+                        (click)="openFormExamenesAdmision()">Agregar Examen Admisión</button>
                 </li>
             </ul>
         </div>
     </mat-card-header>
 
     <mat-card-content>
-        <table mat-table clas="mat-cell" [dataSource] = 'dataSource'>
+        <table mat-table class="mat-cell" [dataSource]='dataSource'>
             <ng-container matColumnDef="no">
                 <th mat-header-cell *matHeaderCellDef>No.</th>
                 <td mat-cell *matCellDef="let elemento; index as row">
@@ -29,21 +30,28 @@
             </ng-container>
             <ng-container matColumnDef="fecha">
                 <th mat-header-cell *matHeaderCellDef>Fecha Examen</th>
-                    <td mat-cell *matCellDef="let elemento">
-                        {{elemento.fechaExamen | date:'dd/MM/yy H:mm a'}}
-                    </td>
+                <td mat-cell *matCellDef="let elemento">
+                    {{elemento.fechaExamen | date:'dd/MM/yy H:mm a'}}
+                </td>
             </ng-container>
             <ng-container matColumnDef="acciones">
                 <th mat-header-cell *matHeaderCellDef>Acciones</th>
                 <td mat-cell *matCellDef="let elemento; let i=index;">
-                    <button mat-icon-button id="color-verde" (click)="editFormExamenAdmision(elemento.examendId, elemento.fechaExamen)">
+                    <button *ngIf="authService.hasRole('ROLE_ADMIN')" mat-icon-button id="color-verde"
+                        (click)="editFormExamenAdmision(elemento.examendId, elemento.fechaExamen)">
                         <mat-icon aria-label="Edit">
                             edit
                         </mat-icon>
                     </button>
-                    <button mat-icon-button id="color-rojo" (click)="deleteExamenAdmision(elemento.examendId, elemento.fechaExamen)">
+                    <button *ngIf="authService.hasRole('ROLE_ADMIN')" mat-icon-button id="color-rojo"
+                        (click)="deleteExamenAdmision(elemento.examenId, elemento.fechaExamen)">
                         <mat-icon aria-label="Delete">
                             delete
+                        </mat-icon>
+                    </button>
+                    <button mat-icon-button color="primary" (click)="openEnrrollmentExamenAdmision(elemento.examenId, elemento.fechaExamen)">
+                        <mat-icon aria-label="Asignar">
+                            assignment
                         </mat-icon>
                     </button>
                 </td>

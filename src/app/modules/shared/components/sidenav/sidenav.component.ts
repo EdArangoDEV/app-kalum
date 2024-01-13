@@ -44,6 +44,11 @@ export class SidenavComponent implements OnInit {
       title: 'LogOut',
       text: `${username}, has cerrado sesión.`,
       footer: '<a href="">Kalum-app v1.0.0</a>',
-    });
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.reload();
+      }
+    })
+    
   }
 }

@@ -6,6 +6,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormCarreraTecnicaComponent } from './components/carreras-tecnicas/form-carrera-tecnica.component';
 import { FormRegisterAspiranteComponent } from './components/carreras-tecnicas/form-register-aspirante.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -18,6 +19,7 @@ import { FormRegisterAspiranteComponent } from './components/carreras-tecnicas/f
   imports: [
     CommonModule,
     MaterialModule,
+    RouterModule,
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule
