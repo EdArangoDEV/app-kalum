@@ -41,7 +41,7 @@ export class JornadasComponent implements OnInit {
     listaJornadas.forEach((elemento: Jornada) => {
       dataJornadas.push(elemento);
     });
-    console.log(dataJornadas);
+    // console.log(dataJornadas);
     this.dataSource = new MatTableDataSource<Jornada>(dataJornadas);
     this.dataSource.paginator = this.paginador;
   }

@@ -125,7 +125,7 @@ export class ExamenesAdmisionComponent implements OnInit {
           next: (data) => {
             Swal.fire(
               'Examenes Admisión',
-              `Se elimino el examen admisión: ${fecha}`,
+              `Se elimino el examen admisión: ${fecha}, espere unos segundos para ver los cambios.`,
               'success'
             );
             this.getExamenesAdmision();

@@ -5,7 +5,7 @@
     <form [formGroup]="examenesAdmisionFormGroup">
         <div class="form-element-container">
             <mat-form-field>
-                <input formControlName="fechaExamen" matInput placeholder="Examen Admisión" required>
+                <input type="datetime-local" formControlName="fechaExamen" matInput placeholder="Examen Admisión" required>
             </mat-form-field>
         </div>
     </form>
